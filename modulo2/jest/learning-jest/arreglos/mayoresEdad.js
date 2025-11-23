@@ -1,14 +1,15 @@
 function mayoresEdad(arreglo){
     if(!Array.isArray(arreglo)) 
         throw new TypeError("arreglo inválido");
-    let mayores=[];
+    const mayores = [];
     for (let i=0; i<arreglo.length; i++){
-        if(arreglo[i]<0) 
+        const valor = (arreglo[i] && typeof arreglo[i] === 'object') ? arreglo[i].edad : arreglo[i];
+        if(valor < 0) 
             throw new TypeError("edad inválida");
-        if(arreglo[i]>=18){
-            mayores.push(arreglo[i]);
+        if(valor >= 18){
+            mayores.push(valor);
         }
     }
     return mayores;
 }
-module.exports={mayoresEdad}
+module.exports = { mayoresEdad };
